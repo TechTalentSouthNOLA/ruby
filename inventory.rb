@@ -22,6 +22,7 @@ class Inventory
     puts "Thanks for playing!"
   end
 
+  # Anything listed under 'private' can only be called from within the class. For example, if you loaded this into irb, you would not be able to call get_action yourself.
   private
 
   def get_action
