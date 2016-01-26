@@ -11,9 +11,9 @@ class Inventory
 
       case action
       when 1
-        add_item
+        show_items
       when 2
-        remove_item
+        change_item
       else
         break
       end
@@ -25,14 +25,14 @@ class Inventory
   private
 
   def get_action
-    puts "What do you want to do?"
-    puts " 1 = change an item"
-    puts " 2 = remove an item"
+    puts "\nWhat do you want to do?"
+    puts " 1 = show all items"
+    puts " 2 = change an item"
     puts " 9 = quit"
     gets.to_i
   end
 
-  def add_item
+  def change_item
     puts "Which item do you want to change?"
     item = get_item
 
@@ -41,12 +41,18 @@ class Inventory
   end
 
   def get_item
-    @inventory.each do |item, value|
-      puts "  #{item}:  #{value}"
-    end
+    show_items
 
     print " enter item > "
     gets.chomp.to_sym
+  end
+
+  def show_items
+    puts "\n" + "*" * 40
+    @inventory.each do |item, value|
+      puts "  #{item}:  #{value}"
+    end
+    puts "*" * 40 + "\n\n"
   end
 end
 
